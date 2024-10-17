@@ -1,0 +1,26 @@
+{
+  "es": {
+    "welcome": "Bienvenido a la Calculadora",
+    "num1": "Introduce el primer número: ",
+    "num2": "Ingrese el segundo número: ",
+    "invalid": "Ese no es un número válido.",
+    "calc": "Elige una operación:\n 1) agregar 2) sustraer 3) multiplicar 4) dividir",
+    "again": "¿Le gustaría realizar otra operación?"
+  },
+  "en": {
+    "welcome": "Welcome to Calculator",
+    "num1": "Enter first number: ",
+    "num2": "Enter second number: ",
+    "invalid": "That isn't a valid number.",
+    "calc": "Choose an operation:\n 1) add 2) subtract 3) multiply 4) divide",
+    "again": "Would you like to perform another calculation?"
+  },
+  "fr": {
+    "welcome": "Bienvenue sur la Calculatrice",
+    "num1": "Entrez le deuxième numéro: ",
+    "num2": "Enter second number: ",
+    "invalid": "Ce n'est pas un numéro valide.",
+    "calc": "Choisissez une opération:\n 1) ajouter 2) soustraire 3) multiplier 4) diviser",
+    "again": "Souhaitez-vous effectuer une autre opération?"
+  }
+}
