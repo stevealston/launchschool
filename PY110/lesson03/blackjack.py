@@ -78,7 +78,7 @@ def create_cards(user):
 
     return cards
 
-def display_cards(user, *cards):
+def display_scores(user):
     if user["name"] == 'player':
         print(f"===== {user['name'].capitalize()}" +
               f" has: {user['score']} =====")
@@ -88,6 +88,7 @@ def display_cards(user, *cards):
     else:
         print(f"===== {user['name'].capitalize()} has: unknown =====")
 
+def display_cards(*cards):
     num_lines = len(cards[0])    
 
     for i in range(num_lines):
@@ -95,8 +96,12 @@ def display_cards(user, *cards):
 
 def display_hands():
     os.system('clear')
-    display_cards(DEALER, *create_cards(DEALER))
-    display_cards(PLAYER, *create_cards(PLAYER))
+
+    display_scores(DEALER)
+    display_cards(*create_cards(DEALER))
+    display_scores(PLAYER)
+    display_cards(*create_cards(PLAYER))
+    print()
 
 def initialize_game(deck):
     for _ in range(2):
@@ -178,13 +183,13 @@ def play_blackjack():
                     hit(deck, PLAYER)
                     calculate_score(PLAYER)
                     display_hands()
-
-                    if detect_bust(PLAYER):
-                        print()
-                        print("===== YOU LOSE! =====")
-                        break
                 else:
                     PLAYER["is_playing"] = False
+
+                if detect_bust(PLAYER):
+                    print()
+                    print("===== YOU LOSE! =====")
+                    break
       
             else:
                 time.sleep(1)
