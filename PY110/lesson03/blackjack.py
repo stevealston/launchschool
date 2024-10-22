@@ -13,11 +13,11 @@ def initialize_deck():
     deck = []
 
     for suit in ['♥', '♠', '♣', '♦']:
-        for i in range(2, 11):
+        for val in range(2, 11):
             card = {}
             card["suit"] = suit
-            card["type"] = f"{i}"
-            card["value"] = i
+            card["type"] = f"{val}"
+            card["value"] = val
             deck.append(card)
         for key in ['J', 'Q', 'K']:
             card = {}
@@ -32,6 +32,7 @@ def initialize_deck():
         card["value"] = 11
         deck.append(card)
 
+    random.shuffle(deck)
     return deck
 
 def first_line_formatting(card):
@@ -103,19 +104,13 @@ def display_hands():
     display_cards(*create_cards(PLAYER))
     print()
 
-def initialize_game(deck):
+def deal_cards(deck):
     for _ in range(2):
         PLAYER["cards"].append(deal_card(deck))
         DEALER["cards"].append(deal_card(deck))    
 
 def deal_card(deck):
-    chosen_card = random.choice(deck)
-    
-    for card in deck:
-        if (card["suit"] == chosen_card["suit"]
-            and card["type"] == chosen_card["type"]
-            and card["value"] == chosen_card["value"]):
-            deck.remove(card)
+    chosen_card = deck.pop()
 
     return chosen_card
 
@@ -165,13 +160,13 @@ def play_blackjack():
     # while True:
     while True:
         deck = initialize_deck()
-        initialize_game(deck)
+        deal_cards(deck)
         calculate_score(PLAYER)
         calculate_score(DEALER)
 
         while True:
             display_hands()
-
+            
             if detect_bust(DEALER):
                 print()
                 print("===== YOU'RE A WINNER!!!! =====")
